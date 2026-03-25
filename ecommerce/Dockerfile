@@ -1,15 +1,27 @@
-# ---- Stage 1: Build ----
-FROM python:3.11-alpine AS builder
-WORKDIR /build
-RUN apk add --no-cache gcc musl-dev libffi-dev
-COPY requirements.txt .
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
-
-# ---- Stage 2: Runtime ----
-FROM python:3.11-alpine
+# ---- Stage 1 : Build frontend (Tailwind) ----
+FROM node:18-slim AS frontend
 WORKDIR /app
-COPY --from=builder /install /usr/local
+COPY package*.json ./
+RUN npm i
 COPY . .
-RUN python manage.py collectstatic --noinput 2>/dev/null || true
+RUN npm run build
+
+# ---- Stage 2 : Python ----
+FROM python:3.11-slim
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+COPY --from=frontend /app/static /app/static
+
+RUN python manage.py collectstatic --no-input && \
+    python manage.py makemigrations && \
+    python manage.py migrate
+
 EXPOSE 5005
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
