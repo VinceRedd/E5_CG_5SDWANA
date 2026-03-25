@@ -6,8 +6,10 @@
 # Projet K8S Kubernetes
 
 > **Environnement :** VM Debian — 6 Go RAM  
+
 > **Registry Docker Hub :** https://hub.docker.com/repositories/vincentcacciatore
 
+> **Logs :** https://github.com/VinceRedd/E5_CG_5SDWANA/tree/main/logs
 ## Table des matières
 
 - [Projet K8S Kubernetes](#projet-k8s-kubernetes)
@@ -51,12 +53,15 @@
     - [État complet du cluster](#état-complet-du-cluster)
     - [Historique des Rollouts](#historique-des-rollouts)
     - [Métriques Docker et Kubernetes](#métriques-docker-et-kubernetes)
-  - [17. Récapitulatif des exigences](#17-récapitulatif-des-exigences)
+  - [17. Problèmes rencontrées](#17-problèmes-rencontrés)
+  - [18. Conclusion](#18-conclusion)
+  - [Notes](#notes)
+  - [19. Récapitulatif des exigences](#19-récapitulatif-des-exigences)
     - [✅ Exigences de la Partie 1](#-exigences-de-la-partie-1)
     - [✅ Exigences de la Partie 2](#-exigences-de-la-partie-2)
     - [✅ Convention de nommage](#-convention-de-nommage)
     - [Fichiers de logs produits](#fichiers-de-logs-produits)
-    - [Notes](#notes)
+
 
 ---
 
@@ -893,7 +898,45 @@ ls -la logs/
 
 ---
 
-## 17. Récapitulatif des exigences
+## 17. Problèmes rencontrés
+
+Au cours de la mise en place et des tests de l’infrastructure Kubernetes, plusieurs difficultés techniques ont été rencontrées.
+
+### Erreurs de configuration des pods
+
+Lors du déploiement de l’application *ecommerce*, une erreur de type `CreateContainerConfigError` est apparue. Après analyse via la commande `kubectl describe pod`, il s’est avéré que le pod ne parvenait pas à démarrer en raison d’un secret manquant. Le Deployment faisait référence à un secret nommé `secret-ecommerce-cg-25-03-2026`, alors que seul un secret nommé `stripe-secret` existait dans le namespace. Cette incohérence a empêché l’injection des variables d’environnement nécessaires (clés Stripe). Le problème a été résolu en harmonisant le nom du secret avec celui attendu par le Deployment.
+
+### Gestion des namespaces
+
+Certaines ressources (secrets, configmaps) n’étaient pas présentes dans les bons namespaces (`dev`, `preprod`, `prod`), ce qui a entraîné des erreurs lors du déploiement des pods. Cela a mis en évidence l’importance de bien isoler et répliquer les ressources critiques dans chaque environnement.
+
+### Saturation des ressources en préproduction
+
+En environnement *preprod*, le déploiement de plusieurs réplicas combiné à l’utilisation du Horizontal Pod Autoscaler (HPA) a rapidement atteint les limites de ressources du cluster Minikube. Cela s’est traduit par des pods en état `Pending` et des métriques CPU indisponibles (`cpu: unknown`). Cette situation est due aux limitations matérielles de l’environnement local, qui ne permet pas de simuler un cluster à grande échelle.
+
+### Limitations du monitoring
+
+Dans certains cas, les métriques n’étaient pas disponibles pour le HPA, notamment lorsque les pods ne pouvaient pas être planifiés. Cela a empêché une observation complète du comportement d’autoscaling dans certains environnements.
+
+---
+
+## 18. Conclusion
+
+Ce projet a permis de mettre en place une infrastructure Kubernetes complète, intégrant plusieurs environnements (développement, préproduction, production), des déploiements applicatifs, des services exposés, ainsi qu’un mécanisme d’autoscaling via le Horizontal Pod Autoscaler.
+
+Les tests de charge réalisés avec ApacheBench ont démontré la capacité du cluster à s’adapter dynamiquement à une montée en charge, notamment en environnement de production où le HPA a correctement augmenté le nombre de pods pour maintenir une utilisation CPU cible. Les outils de monitoring (`kubectl top`, `kubectl get hpa`) ont permis d’observer en temps réel ce comportement.
+
+Malgré certaines limitations liées à l’environnement local (ressources limitées de Minikube), le fonctionnement global de Kubernetes a été validé : gestion des déploiements, orchestration des conteneurs, injection de configuration et de secrets, ainsi que montée en charge automatique. Ces contraintes n’impactent pas la validité de l’architecture, qui serait pleinement fonctionnelle dans un environnement cloud ou un cluster multi-nœuds disposant de ressources adaptées.
+
+Enfin, ce projet met en évidence l’intérêt de Kubernetes pour le déploiement d’applications modernes, en apportant scalabilité, résilience et automatisation, tout en soulignant l’importance d’une bonne gestion des configurations et des ressources.
+
+---
+### Notes
+Via GitHub Push Protection, le commit & push des logs du fichier regroupant l'ensemble des commandes effectuées a été bloqué. J'ai donc décidé de modifier manuellement dans ce fichier les clés Stripe en les renommant "XXX".
+![alt text](image.png)
+
+
+## 19. Récapitulatif des exigences
 
 Le tableau ci-dessous présente une vérification exhaustive de toutes les exigences du projet.
 
@@ -964,9 +1007,3 @@ Le tableau ci-dessous présente une vérification exhaustive de toutes les exige
 | `logs/docker-images.log` | Liste des images Docker |
 | `logs/top-pods-prod.log` | Métriques CPU/RAM des pods |
 | `logs/top-nodes.log` | Métriques CPU/RAM des nœuds |
-
----
-
-### Notes
-Via GitHub Push Protection, le commit & push des logs du fichier regroupant l'ensemble des commandes effectuées a été bloqué. J'ai donc décidé de modifier manuellement dans ce fichier les clés Stripe en les renommant "XXX".
-![alt text](image.png)
