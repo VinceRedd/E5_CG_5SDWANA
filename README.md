@@ -12,6 +12,8 @@ Il démontre le déploiement d’une architecture conteneurisée avec **3 applic
 
 👉 Docker Hub : https://hub.docker.com/repositories/vincentcacciatore
 
+👉 Logs : https://github.com/VinceRedd/E5_CG_5SDWANA/tree/main/logs
+
 
 ---
 
