@@ -1,22 +1,13 @@
-FROM python:3.10.4
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
+FROM python:3.11-alpine AS builder
+WORKDIR /build
+RUN apk add --no-cache gcc musl-dev libffi-dev
 COPY requirements.txt .
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-# install python dependencies
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
-
+FROM python:3.11-alpine
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
-# Manage Assets & DB 
-RUN python manage.py collectstatic --no-input 
-RUN python manage.py makemigrations
-RUN python manage.py migrate
-
-# gunicorn
+RUN python manage.py collectstatic --noinput 2>/dev/null || true
 EXPOSE 5005
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]

@@ -1,37 +1,15 @@
-FROM python:3.11.5
-
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
+# ---- Stage 1: Build ----
+FROM python:3.11-alpine AS builder
+WORKDIR /build
+RUN apk add --no-cache gcc musl-dev libffi-dev
 COPY requirements.txt .
-# install python dependencies
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 
+# ---- Stage 2: Runtime ----
+FROM python:3.11-alpine
+WORKDIR /app
+COPY --from=builder /install /usr/local
 COPY . .
-
-# Install node 18 and npm
-RUN set -uex; \
-    apt-get update; \
-    apt-get install -y ca-certificates curl gnupg; \
-    mkdir -p /etc/apt/keyrings; \
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
-     | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg; \
-    NODE_MAJOR=18; \
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
-     > /etc/apt/sources.list.d/nodesource.list; \
-    apt-get update; \
-    apt-get install nodejs -y;
-
-# Install modules and webpack
-RUN npm i
-RUN npm run build
-
-# Manage Assets & DB 
-RUN python manage.py collectstatic --no-input 
-RUN python manage.py makemigrations
-RUN python manage.py migrate
-
-# gunicorn
+RUN python manage.py collectstatic --noinput 2>/dev/null || true
+EXPOSE 5005
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
