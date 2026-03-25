@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-cg-25-03-2026
+  labels:
+    env: dev
+    project: projet-k8s-CG
