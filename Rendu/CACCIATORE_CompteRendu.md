@@ -56,6 +56,7 @@
     - [✅ Exigences de la Partie 2](#-exigences-de-la-partie-2)
     - [✅ Convention de nommage](#-convention-de-nommage)
     - [Fichiers de logs produits](#fichiers-de-logs-produits)
+    - [Notes](#notes)
 
 ---
 
@@ -149,8 +150,6 @@ projet-k8s-CG/
 └── prod-namespace.yaml
 ```
 
-> 📸 **[SCREENSHOT — Architecture répertoires : `tree projet-k8s-CG/ -L 3`]**
-
 ---
 
 ## 4. Mise en place de l'environnement
@@ -165,7 +164,7 @@ sudo apt-get install -y docker.io curl git unzip apache2-utils
 sudo usermod -aG docker $USER
 ```
 
-> ⚠️ Après l'ajout au groupe `docker`, il faut **se déconnecter et se reconnecter** pour que les droits soient pris en compte.
+> Après l'ajout au groupe `docker`, il faut **se déconnecter et se reconnecter** pour que les droits soient pris en compte.
 
 Vérification de Docker :
 
@@ -258,11 +257,6 @@ ls rocket-django/requirements.txt rocket-django/manage.py
 
 ![alt text](image-4.png)
 
-```bash
-git add .
-git commit -m "feat: ajout des sources des 3 applications"
-```
-
 ---
 
 ## 5. Containerisation — Dockerfiles
@@ -304,7 +298,7 @@ EXPOSE 5005
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
 ```
 
-**Explication du choix :** L'image `python:3.11-slim` est utilisée en runtime car elle est significativement plus légère que l'image standard tout en gardant une compatibilité maximale avec les dépendances Python (contrairement à Alpine qui peut poser des problèmes avec certains packages compilés : j'ai testé avec alpine, et ça crashait en boucle).
+**Explication du choix :** L'image `python:3.11-slim` est utilisée en runtime car elle est significativement plus légère que l'image standard tout en gardant une compatibilité maximale avec les dépendances Python (contrairement à Alpine qui peut poser des problèmes avec certains packages compilés : j'ai testé avec alpine, et ça crashait en boucle pour cette app).
 
 ### 5.2 Dashboard
 
@@ -331,7 +325,6 @@ CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
 ### 5.3 Rocket-Django
 
 ```bash
-cat > rocket-django/Dockerfile << 'EOF'
 FROM python:3.11-slim AS builder
 WORKDIR /build
 RUN apt-get update && apt-get install -y --no-install-recommends gcc libffi-dev && rm -rf /var/lib/apt/lists/*
@@ -347,7 +340,6 @@ RUN python manage.py collectstatic --noinput 2>/dev/null || true && \
     python manage.py migrate --noinput 2>/dev/null || true
 EXPOSE 5005
 CMD ["gunicorn", "--config", "gunicorn-cfg.py", "core.wsgi"]
-EOF
 ```
 
 **Explication du choix :** Rocket-Django intègre des dépendances scientifiques (pandas, numpy) qui nécessitent des bibliothèques C compilées. On utilise donc `slim` (Debian minimal) plutôt qu'Alpine pour éviter les problèmes de compilation.
@@ -614,7 +606,7 @@ for APP in ecommerce dashboard rocket-django; do
 done
 ```
 
-Vérification globale de PROD (9 pods au total — 3 par app) :
+Vérification globale de PROD (9 pods au total : 3 par app) :
 
 ```bash
 kubectl get pods -n prod-cg-25-03-2026
@@ -636,7 +628,7 @@ kubectl exec -it $(kubectl get pod -l app=ecommerce-cg-25-03-2026 \
 
 ![alt text](image-10.png)
 
-(les valeurs des clés sont coupées volontairement)
+(les valeurs des clés sont coupées volontairement, et à la fin du projet elles seront de toutes façon regénérées...)
 
 ---
 
@@ -974,3 +966,7 @@ Le tableau ci-dessous présente une vérification exhaustive de toutes les exige
 | `logs/top-nodes.log` | Métriques CPU/RAM des nœuds |
 
 ---
+
+### Notes
+Via GitHub Push Protection, le commit & push des logs du fichier regroupant l'ensemble des commandes effectuées a été bloqué. J'ai donc décidé de modifier manuellement dans ce fichier les clés Stripe en les renommant "XXX".
+![alt text](image.png)
