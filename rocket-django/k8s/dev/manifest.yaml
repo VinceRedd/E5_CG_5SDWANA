@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+data:
+  DEBUG: "True"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+  labels:
+    app: rocket-django-cg-25-03-2026
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocket-django-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: rocket-django-cg-25-03-2026
+        env: dev
+    spec:
+      containers:
+        - name: rocket-django
+          image: rocket-django-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-rocket-django-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: rocket-django-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
