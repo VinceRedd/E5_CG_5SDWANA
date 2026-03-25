@@ -935,6 +935,9 @@ Enfin, ce projet met en évidence l’intérêt de Kubernetes pour le déploieme
 Via GitHub Push Protection, le commit & push des logs du fichier regroupant l'ensemble des commandes effectuées a été bloqué. J'ai donc décidé de modifier manuellement dans ce fichier les clés Stripe en les renommant "XXX".
 ![alt text](image.png)
 
+### Sécurité de l’infrastructure
+
+Une attention particulière a été portée à la gestion des informations sensibles au sein de l’infrastructure. Les données critiques, telles que les clés API Stripe, ne sont pas intégrées en dur dans le code source mais injectées dynamiquement via des objets Kubernetes de type `Secret`. Cette approche permet de limiter l’exposition des informations sensibles et de séparer clairement la configuration de l’application de son code. Toutefois, les `Secrets` Kubernetes restent encodés en base64 et non chiffrés par défaut, ce qui constitue une limite en termes de sécurité. Dans une architecture en production, il serait recommandé d’intégrer un gestionnaire de secrets dédié, tel que HashiCorp Vault, afin de centraliser, chiffrer et contrôler finement l’accès aux données sensibles. Cette évolution permettrait de renforcer significativement la posture de sécurité globale de la plateforme.
 
 ## 19. Récapitulatif des exigences
 
