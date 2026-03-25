@@ -1,0 +1,10 @@
+NAME                                           CPU(cores)   MEMORY(bytes)   
+dashboard-cg-25-03-2026-7d5dd84c7d-j4w5c       1m           70Mi            
+dashboard-cg-25-03-2026-7d5dd84c7d-rbh4c       1m           57Mi            
+dashboard-cg-25-03-2026-7d5dd84c7d-v9wvf       1m           57Mi            
+ecommerce-cg-25-03-2026-f7755c6b7-2l4bz        1m           78Mi            
+ecommerce-cg-25-03-2026-f7755c6b7-jc5bd        1m           78Mi            
+ecommerce-cg-25-03-2026-f7755c6b7-mrv85        1m           78Mi            
+rocket-django-cg-25-03-2026-5488d97ff8-hscns   1m           69Mi            
+rocket-django-cg-25-03-2026-5488d97ff8-wj7wr   6m           98Mi            
+rocket-django-cg-25-03-2026-5488d97ff8-zlzpm   1m           66Mi            

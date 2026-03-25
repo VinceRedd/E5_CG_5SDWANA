@@ -1,0 +1,174 @@
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] Current configuration:
+  config: gunicorn-cfg.py
+  wsgi_app: None
+  bind: ['0.0.0.0:5005']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: -
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: True
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: core.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f7248f48ae0>
+  on_reload: <function OnReload.on_reload at 0x7f7248f48c20>
+  when_ready: <function WhenReady.when_ready at 0x7f7248f48d60>
+  pre_fork: <function Prefork.pre_fork at 0x7f7248f48ea0>
+  post_fork: <function Postfork.post_fork at 0x7f7248f48fe0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f7248f49120>
+  worker_int: <function WorkerInt.worker_int at 0x7f7248f49260>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f7248f493a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f7248f494e0>
+  pre_request: <function PreRequest.pre_request at 0x7f7248f49620>
+  post_request: <function PostRequest.post_request at 0x7f7248f496c0>
+  child_exit: <function ChildExit.child_exit at 0x7f7248f49800>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f7248f49940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f7248f49a80>
+  on_exit: <function OnExit.on_exit at 0x7f7248f49bc0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f7248f49da0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2026-03-25 10:36:05 +0000] [1] [INFO] Starting gunicorn 21.2.0
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] Arbiter booted
+[2026-03-25 10:36:05 +0000] [1] [INFO] Listening at: http://0.0.0.0:5005 (1)
+[2026-03-25 10:36:05 +0000] [1] [INFO] Using worker: sync
+[2026-03-25 10:36:05 +0000] [7] [INFO] Booting worker with pid: 7
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] 1 workers
+[2026-03-25 10:42:24 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:7)
+[2026-03-25 10:42:24 +0000] [7] [INFO] Worker exiting (pid: 7)
+[2026-03-25 10:42:25 +0000] [1] [ERROR] Worker (pid:7) exited with code 1
+[2026-03-25 10:42:25 +0000] [1] [ERROR] Worker (pid:7) exited with code 1.
+[2026-03-25 10:42:25 +0000] [9] [INFO] Booting worker with pid: 9
+[2026-03-25 10:42:26 +0000] [9] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:42:28 +0000] "GET / HTTP/1.1" 200 185885 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:28 +0000] [9] [DEBUG] GET /static/dist/main.css
+127.0.0.1 - - [25/Mar/2026:10:42:28 +0000] "GET /static/dist/main.css HTTP/1.1" 200 95196 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:28 +0000] [9] [DEBUG] GET /static/dist/main.bundle.js
+127.0.0.1 - - [25/Mar/2026:10:42:28 +0000] "GET /static/dist/main.bundle.js HTTP/1.1" 200 766212 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:28 +0000] [9] [DEBUG] GET /static/dist/img/default-user.png
+127.0.0.1 - - [25/Mar/2026:10:42:28 +0000] "GET /static/dist/img/default-user.png HTTP/1.1" 200 36073 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:42 +0000] [9] [DEBUG] GET /charts/
+127.0.0.1 - - [25/Mar/2026:10:50:42 +0000] "GET /charts/ HTTP/1.1" 500 145 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:43 +0000] [9] [DEBUG] GET /favicon.ico
+127.0.0.1 - - [25/Mar/2026:10:50:43 +0000] "GET /favicon.ico HTTP/1.1" 404 179 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:10 +0000] [9] [DEBUG] GET /charts/
+[2026-03-25 10:51:10 +0000] [9] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:51:10 +0000] "GET /charts/ HTTP/1.1" 500 145 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:51:10 +0000] "GET / HTTP/1.1" 200 185885 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:10 +0000] [9] [DEBUG] GET /favicon.ico
+127.0.0.1 - - [25/Mar/2026:10:51:10 +0000] "GET /favicon.ico HTTP/1.1" 404 179 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:46 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:9)
+[2026-03-25 10:51:46 +0000] [9] [INFO] Worker exiting (pid: 9)
+[2026-03-25 10:51:47 +0000] [1] [ERROR] Worker (pid:9) exited with code 1
+[2026-03-25 10:51:47 +0000] [1] [ERROR] Worker (pid:9) exited with code 1.
+[2026-03-25 10:51:47 +0000] [12] [INFO] Booting worker with pid: 12
+[2026-03-25 10:51:48 +0000] [12] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:51:49 +0000] "GET / HTTP/1.1" 200 185885 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:49 +0000] [12] [DEBUG] GET /static/dist/main.css
+127.0.0.1 - - [25/Mar/2026:10:51:49 +0000] "GET /static/dist/main.css HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:50 +0000] [12] [DEBUG] GET /static/dist/main.bundle.js
+127.0.0.1 - - [25/Mar/2026:10:51:50 +0000] "GET /static/dist/main.bundle.js HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:51:50 +0000] [12] [DEBUG] GET /static/dist/img/default-user.png
+127.0.0.1 - - [25/Mar/2026:10:51:50 +0000] "GET /static/dist/img/default-user.png HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:29 +0000] [12] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:52:29 +0000] "GET / HTTP/1.1" 200 185885 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:50 +0000] [12] [DEBUG] GET /charts/
+127.0.0.1 - - [25/Mar/2026:10:52:50 +0000] "GET /charts/ HTTP/1.1" 200 75419 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:50 +0000] [12] [DEBUG] GET /static/dist/main.css
+127.0.0.1 - - [25/Mar/2026:10:52:50 +0000] "GET /static/dist/main.css HTTP/1.1" 304 0 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:50 +0000] [12] [DEBUG] GET /static/dist/main.bundle.js
+127.0.0.1 - - [25/Mar/2026:10:52:50 +0000] "GET /static/dist/main.bundle.js HTTP/1.1" 304 0 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:50 +0000] [12] [DEBUG] GET /static/dist/img/default-user.png
+127.0.0.1 - - [25/Mar/2026:10:52:50 +0000] "GET /static/dist/img/default-user.png HTTP/1.1" 304 0 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:51 +0000] [12] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:52:51 +0000] "GET / HTTP/1.1" 200 185885 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:21 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:12)
+[2026-03-25 10:53:21 +0000] [12] [INFO] Worker exiting (pid: 12)
+[2026-03-25 10:53:21 +0000] [1] [ERROR] Worker (pid:12) exited with code 1
+[2026-03-25 10:53:21 +0000] [1] [ERROR] Worker (pid:12) exited with code 1.
+[2026-03-25 10:53:21 +0000] [22] [INFO] Booting worker with pid: 22
+[2026-03-25 11:03:28 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:22)
+[2026-03-25 11:03:28 +0000] [22] [INFO] Worker exiting (pid: 22)
+[2026-03-25 11:03:28 +0000] [1] [ERROR] Worker (pid:22) exited with code 1
+[2026-03-25 11:03:28 +0000] [1] [ERROR] Worker (pid:22) exited with code 1.
+[2026-03-25 11:03:28 +0000] [24] [INFO] Booting worker with pid: 24
+[2026-03-25 11:03:29 +0000] [24] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:11:03:30 +0000] "GET / HTTP/1.1" 200 185885 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:30 +0000] [24] [DEBUG] GET /static/dist/main.css
+127.0.0.1 - - [25/Mar/2026:11:03:30 +0000] "GET /static/dist/main.css HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:30 +0000] [24] [DEBUG] GET /static/dist/main.bundle.js
+127.0.0.1 - - [25/Mar/2026:11:03:30 +0000] "GET /static/dist/main.bundle.js HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:30 +0000] [24] [DEBUG] GET /static/dist/img/default-user.png
+127.0.0.1 - - [25/Mar/2026:11:03:30 +0000] "GET /static/dist/img/default-user.png HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:31 +0000] [24] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:11:09:31 +0000] "GET / HTTP/1.1" 200 185885 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:31 +0000] [24] [DEBUG] GET /static/dist/main.css
+127.0.0.1 - - [25/Mar/2026:11:09:31 +0000] "GET /static/dist/main.css HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:31 +0000] [24] [DEBUG] GET /static/dist/main.bundle.js
+127.0.0.1 - - [25/Mar/2026:11:09:31 +0000] "GET /static/dist/main.bundle.js HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:31 +0000] [24] [DEBUG] GET /static/dist/img/default-user.png
+127.0.0.1 - - [25/Mar/2026:11:09:31 +0000] "GET /static/dist/img/default-user.png HTTP/1.1" 304 0 "http://192.168.80.136:5007/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 13:04:37 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:24)
+[2026-03-25 13:04:37 +0000] [24] [INFO] Worker exiting (pid: 24)
+[2026-03-25 13:04:38 +0000] [1] [ERROR] Worker (pid:24) was sent SIGKILL! Perhaps out of memory?
+[2026-03-25 13:04:38 +0000] [27] [INFO] Booting worker with pid: 27
+[2026-03-25 13:04:44 +0000] [27] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:13:04:45 +0000] "GET / HTTP/1.1" 200 185885 "http://192.168.80.136:5007/charts/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"

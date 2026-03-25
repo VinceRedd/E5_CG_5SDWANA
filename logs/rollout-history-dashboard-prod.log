@@ -1,0 +1,5 @@
+deployment.apps/dashboard-cg-25-03-2026 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         v1 - Déploiement initial dashboard en prod
+

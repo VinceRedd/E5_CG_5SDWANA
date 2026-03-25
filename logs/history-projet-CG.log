@@ -1,0 +1,1173 @@
+    1  sudo apt update && sudo apt upgrade -y
+    2  su -
+    3  su - vince
+    4  docker
+    5  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    6  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    7  rm kubectl
+    8  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    9  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+   10  rm minikube-linux-amd64
+   11  curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+   12  docker --version
+   13  kubectl version --client
+   14  minikube version
+   15  helm version
+   16  cat >> ~/.bashrc << 'BASHEOF'
+   17  # Kubernetes autocompletion
+   18  if command -v minikube &>/dev/null; then
+   19    eval "$(minikube completion bash)"
+   20  fi
+   21  source <(kubectl completion bash)
+   22  alias k="kubectl"
+   23  complete -F __start_kubectl k
+   24  BASHEOF
+   25  source ~/.bashrc
+   26  minikube start --driver=docker --memory=4096 --cpus=2
+   27  sudo apt update && sudo apt upgrade -y
+   28  sudo apt install -y curl git unzip wget apt-transport-https ca-certificates gnupg
+   29  curl -fsSL https://get.docker.com | sh
+   30  sudo usermod -aG docker $USER
+   31  newgrp docker
+   32  helm repo add infisical-helm-charts https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
+   33  helm repo update
+   34  helm install infisical-secrets-operator infisical-helm-charts/secrets-operator   --namespace infisical --create-namespace
+   35  kubectl get pods -n infisical
+   36  kubectl create secret generic infisical-auth   --from-literal=clientId='a28b479d-7003-4d3d-a293-083f355fb31b'   --from-literal=clientSecret='0d2f04c91e87bf6f61cf6f188f4535de2a471152fa0b001af1e407b9fb19c2a4'
+   37  cd Desktop/
+   38  ls
+   39  mkdir GestSecret
+   40  cd GestSecret/
+   41  cat > infisical-secret.yaml << 'EOF'
+   42  apiVersion: secrets.infisical.com/v1alpha1
+   43  kind: InfisicalSecret
+   44  metadata:
+   45    name: stripe-secrets
+   46  spec:
+   47    hostAPI: https://app.infisical.com/api
+   48    resyncInterval: 60
+   49    authentication:
+   50      universalAuth:
+   51        secretsScope:
+   52          projectSlug: stripe-app
+   53          envSlug: dev
+   54          secretsPath: "/"
+   55        credentialsRef:
+   56          secretName: infisical-auth
+   57          secretNamespace: default
+   58    managedSecretReference:
+   59      secretName: stripe-managed-secret
+   60      secretNamespace: default
+   61      creationPolicy: Owner
+   62  EOF
+   63  kubectl apply -f infisical-secret.yaml
+   64  kubectl get secrets | grep stripe
+   65  kubectl get secret stripe-managed-secret -o yaml
+   66  kubectl get secret stripe-managed-secret -o jsonpath='{.data.STRIPE_SECRET_KEY}' | base64 -d
+   67  kubectl get secrets | grep stripe
+   68  kubectl get pods -n infisical
+   69  kubectl get secret infisical-auth -o yaml
+   70  kubectl get infisicalsecrets
+   71  kubectl describe infisicalsecret stripe-secrets
+   72  kubectl logs -n infisical -l app.kubernetes.io/name=secrets-operator --tail=50
+   73  kubectl get secrets | grep stripe
+   74  kubectl delete secret infisical-auth
+   75  kubectl create secret generic infisical-auth   --from-literal=clientId='a28b479d-7003-4d3d-a293-083f355fb31b'   --from-literal=clientSecret='6a5b4e3285f21d572ed1e97444e36944191b292a5697a5ef15b6558e6a0cdbe3'
+   76  kubectl delete -f infisical-secret.yaml
+   77  kubectl apply -f infisical-secret.yaml
+   78  kubectl describe infisicalsecret stripe-secrets
+   79  kubectl get secrets | grep stripe
+   80  kubectl get secret stripe-managed-secret -o jsonpath='{.data.STRIPE_SECRET_KEY}' | base64 -d
+   81  echo
+   82  kubectl apply -f infisical-secret.yaml
+   83  kubectl delete -f infisical-secret.yaml
+   84  kubectl apply -f infisical-secret.yaml
+   85  kubectl get secrets | grep stripe
+   86  kubectl delete pod -n infisical -l app.kubernetes.io/name=secrets-operator
+   87  kubectl get pods -n infisical -w
+   88  kubectl delete infisicalsecret stripe-secrets
+   89  kubectl apply -f infisical-secret.yaml
+   90  kubectl describe infisicalsecret stripe-secrets
+   91  kubectl get secret infisical-auth -o jsonpath='{.data.clientId}' | base64 -d; echo
+   92  kubectl get secret infisical-auth -o jsonpath='{.data.clientSecret}' | base64 -d; echo
+   93  kubectl get secret infisical-auth -o json
+   94  kubectl delete secret infisical-auth --ignore-not-found
+   95  kubectl create secret generic infisical-auth   --from-literal=clientId='48c4f877-aeaa-4061-9860-53b4aaa9fd8d'   --from-literal=clientSecret='afd1d6e5ee4a2434f0209738e8ff7028e6465496214b1218ed70f3c391dc8718'
+   96  kubectl delete pod -n infisical -l app.kubernetes.io/name=secrets-operator
+   97  kubectl get pods -n infisical -w
+   98  kubectl delete infisicalsecret stripe-secrets --ignore-not-found
+   99  kubectl apply -f infisical-secret.yaml
+  100  kubectl describe infisicalsecret stripe-secrets
+  101  kubectl get secrets | grep stripe
+  102  kubectl delete infisicalsecret stripe-secrets --ignore-not-found
+  103  kubectl apply -f infisical-secret.yaml
+  104  kubectl describe infisicalsecret stripe-secrets
+  105  kubectl get secrets | grep stripe
+  106  kubectl get secret stripe-managed-secret -o yaml
+  107  kubectl logs -n infisical -l app.kubernetes.io/name=secrets-operator --tail=30
+  108  kubectl delete infisicalsecret stripe-secrets --ignore-not-found
+  109  kubectl apply -f infisical-secret.yaml
+  110  kubectl describe infisicalsecret stripe-secrets
+  111  kubectl get secrets | grep stripe
+  112  kubectl describe infisicalsecret stripe-secrets
+  113  kubectl get secrets | grep stripe
+  114  minikube stop
+  115  ip a
+  116  docker
+  117  docker ps
+  118  docker images
+  119  ip a
+  120  ssh
+  121  docker
+  122  docker ps
+  123  docker images
+  124  ip a
+  125  ls
+  126  cd Desktop/
+  127  ls
+  128  cd Sentinel_Linux_v1.0/
+  129  bash lancer_sentinel.sh 
+  130  ls
+  131  c Sentinel_Linux_v1.0/
+  132  cd Sentinel_Linux_v1.0/
+  133  ls
+  134  bash lancer_sentinel.sh 
+  135  cd ..
+  136  rm Sentinel_Linux_v1.0/
+  137  rm -rf Sentinel_Linux_v1.0/
+  138  ls
+  139  cd Sentinel_Linux_v1.0/
+  140  bash lancer_sentinel.sh 
+  141  kubectl port-forward svc/django-adminlte-svc 8081:80 &
+  142  kubectl port-forward --address 0.0.0.0 svc/django-adminlte-svc 8081:80 &
+  143  kill %1 %2 2>/dev/null
+  144  kubectl port-forward --address 0.0.0.0 svc/django-adminlte-svc 8081:80 &
+  145  dd
+  146  kubectl port-forward svc/flask-datta-svc 8080:80 &
+  147  kubectl port-forward --address 0.0.0.0 svc/flask-datta-svc 8080:80 &
+  148  kill %1 %2 2>/dev/null
+  149  kubectl port-forward --address 0.0.0.0 svc/flask-datta-svc 8080:80 &
+  150  kubectl port-forward svc/netdata-ui 9999:19999 -n monitoring --address 0.0.0.0
+  151  kubectl logs -n prod-python-app -l job-name=k6-load-test -f
+  152  watch kubectl get pods -n prod-python-app
+  153  kubectl get jobs -n prod-python-app
+  154  kubectl logs -n prod-python-app -l job-name=k6-load-test-django -f
+  155  kubectl get hpa -A -w
+  156  # Terminal 2 — Caddy (port 8081 sur ton vrai PC)
+  157  kubectl port-forward svc/caddy-nodeport 8081:80 -n prod-caddy --address 0.0.0.0
+  158  watch kubectl get hpa -n prod-python-app
+  159  kubectl port-forward svc/django-adminlte-nodeport 8080:80 -n prod-python-app --address 0.0.0.0
+  160  kubectl logs -n prod-python-app -l app=django-adminlte --previous
+  161  kubectl port-forward svc/django-adminlte-nodeport 8080:80 -n prod-python-app --address 0.0.0.0
+  162  watch kubectl get pods -n prod-python-app
+  163  ip a
+  164  ls ~/Desktop/manifests/
+  165  kubectl delete namespace prod-python-app prod-caddy monitoring
+  166  kubectl get namespaces
+  167  minikube start --cpus=2 --memory=5500 --driver=docker
+  168  kubectl delete namespace prod-python-app prod-caddy monitoring
+  169  minikube stop
+  170  minikube delete --all --purge
+  171  docker ps
+  172  docker images
+  173  docker system prune -a -f --volumes
+  174  docker volume ls
+  175  df -h /
+  176  sudo apt autoremove -y && sudo apt clean
+  177  sudo journalctl --vacuum-time=1d
+  178  rm -rf /tmp/*
+  179  pip cache purge 2>/dev/null || true
+  180  df -h /
+  181  ls
+  182  cd Documents/
+  183  ls
+  184  cd projet-k8s-CG/
+  185  grep -R "sk_test_" .
+  186  grep -R "STRIPE" .
+  187  git reset --soft origin/main
+  188  git commit -m "env preprod"
+  189  git push origin main
+  190  cat > ecommerce/k8s/dev/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-ecommerce-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+data:
+  DEBUG: "True"
+  FLASK_DEBUG: "True"
+  FLASK_APP: "run.py"
+  SERVER_ADDRESS: "http://localhost:5005/"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+  labels:
+    app: ecommerce-cg-25-03-2026
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecommerce-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecommerce-cg-25-03-2026
+        env: dev
+    spec:
+      containers:
+        - name: ecommerce
+          image: ecommerce-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-ecommerce-cg-25-03-2026
+            - secretRef:
+                name: secret-ecommerce-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ecommerce-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: ecommerce-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+EOF
+
+  191  cat > dashboard/k8s/dev/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-dashboard-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+data:
+  DEBUG: "True"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+  labels:
+    app: dashboard-cg-25-03-2026
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: dashboard-cg-25-03-2026
+        env: dev
+    spec:
+      containers:
+        - name: dashboard
+          image: dashboard-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-dashboard-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dashboard-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: dashboard-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+EOF
+
+  192  cat > rocket-django/k8s/dev/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+data:
+  DEBUG: "True"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+  labels:
+    app: rocket-django-cg-25-03-2026
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rocket-django-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: rocket-django-cg-25-03-2026
+        env: dev
+    spec:
+      containers:
+        - name: rocket-django
+          image: rocket-django-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-rocket-django-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rocket-django-cg-25-03-2026
+  namespace: dev-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: rocket-django-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+EOF
+
+  193  kubectl apply -f ecommerce/k8s/dev/manifest.yaml
+  194  kubectl apply -f dashboard/k8s/dev/manifest.yaml
+  195  kubectl apply -f rocket-django/k8s/dev/manifest.yaml
+  196  cat > ecommerce/k8s/preprod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-ecommerce-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+data:
+  DEBUG: "False"
+  FLASK_APP: "run.py"
+  SERVER_ADDRESS: "http://localhost:5005/"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+  labels:
+    app: ecommerce-cg-25-03-2026
+    env: preprod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecommerce-cg-25-03-2026
+        env: preprod
+    spec:
+      containers:
+        - name: ecommerce
+          image: ecommerce-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "128Mi"
+            limits:
+              cpu: "400m"
+              memory: "384Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-ecommerce-cg-25-03-2026
+            - secretRef:
+                name: secret-ecommerce-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ecommerce-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: ecommerce-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-ecommerce-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ecommerce-cg-25-03-2026
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  197  cat > dashboard/k8s/preprod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-dashboard-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+data:
+  DEBUG: "False"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+  labels:
+    app: dashboard-cg-25-03-2026
+    env: preprod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dashboard-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: dashboard-cg-25-03-2026
+        env: preprod
+    spec:
+      containers:
+        - name: dashboard
+          image: dashboard-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "128Mi"
+            limits:
+              cpu: "400m"
+              memory: "384Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-dashboard-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dashboard-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: dashboard-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-dashboard-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: dashboard-cg-25-03-2026
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  198  cat > rocket-django/k8s/preprod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-rocket-django-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+data:
+  DEBUG: "False"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-django-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+  labels:
+    app: rocket-django-cg-25-03-2026
+    env: preprod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rocket-django-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: rocket-django-cg-25-03-2026
+        env: preprod
+    spec:
+      containers:
+        - name: rocket-django
+          image: rocket-django-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "128Mi"
+            limits:
+              cpu: "400m"
+              memory: "384Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-rocket-django-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rocket-django-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: rocket-django-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-rocket-django-cg-25-03-2026
+  namespace: preprod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: rocket-django-cg-25-03-2026
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  199  kubectl apply -f dashboard/k8s/preprod/manifest.yaml
+  200  kubectl apply -f rocket-django/k8s/preprod/manifest.yaml
+  201  cat > ecommerce/k8s/prod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-ecommerce-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+data:
+  DEBUG: "False"
+  FLASK_APP: "run.py"
+  SERVER_ADDRESS: "http://localhost:5005/"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecommerce-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+  labels:
+    app: ecommerce-cg-25-03-2026
+    env: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ecommerce-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ecommerce-cg-25-03-2026
+        env: prod
+    spec:
+      containers:
+        - name: ecommerce
+          image: ecommerce-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-ecommerce-cg-25-03-2026
+            - secretRef:
+                name: secret-ecommerce-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ecommerce-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: ecommerce-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-ecommerce-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ecommerce-cg-25-03-2026
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  202  cat > dashboard/k8s/prod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-dashboard-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+data:
+  DEBUG: "False"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+  labels:
+    app: dashboard-cg-25-03-2026
+    env: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dashboard-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: dashboard-cg-25-03-2026
+        env: prod
+    spec:
+      containers:
+        - name: dashboard
+          image: dashboard-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-dashboard-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-dashboard-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: dashboard-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-dashboard-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: dashboard-cg-25-03-2026
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  203  cat > rocket-django/k8s/prod/manifest.yaml << 'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-rocket-django-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+data:
+  DEBUG: "False"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rocket-django-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+  labels:
+    app: rocket-django-cg-25-03-2026
+    env: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rocket-django-cg-25-03-2026
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: rocket-django-cg-25-03-2026
+        env: prod
+    spec:
+      containers:
+        - name: rocket-django
+          image: rocket-django-cg-25-03-2026:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5005
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          envFrom:
+            - configMapRef:
+                name: cm-rocket-django-cg-25-03-2026
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-rocket-django-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  type: LoadBalancer
+  selector:
+    app: rocket-django-cg-25-03-2026
+  ports:
+    - port: 5005
+      targetPort: 5005
+      protocol: TCP
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-rocket-django-cg-25-03-2026
+  namespace: prod-cg-25-03-2026
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: rocket-django-cg-25-03-2026
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+    scaleDown:
+      stabilizationWindowSeconds: 60
+      policies:
+        - type: Percent
+          value: 50
+          periodSeconds: 15
+EOF
+
+  204  kubectl create secret generic secret-ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   --from-literal=STRIPE_SECRET_KEY=""   --from-literal=STRIPE_PUBLISHABLE_KEY="XXX"
+  205  kubectl apply -f dashboard/k8s/prod/manifest.yaml
+  206  kubectl apply -f rocket-django/k8s/prod/manifest.yaml
+  207  chmod +x scripts/annotate-rollouts.sh
+  208  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  209  kubectl delete namespace dev-cg-25-03-2026
+  210  kubectl apply -f ecommerce/k8s/prod/manifest.yaml
+  211  kubectl apply -f dashboard/k8s/prod/manifest.yaml
+  212  kubectl apply -f rocket-django/k8s/prod/manifest.yaml
+  213  kubectl describe pod rocket-django-cg-25-03-2026-58c48c6956-dwxnn -n preprod-cg-25-03-2026 | grep -A5 Events
+  214  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  215  kubectl apply -f ecommerce/k8s/prod/manifest.yaml
+  216  kubectl apply -f dashboard/k8s/prod/manifest.yaml
+  217  kubectl apply -f rocket-django/k8s/prod/manifest.yaml
+  218  kubectl get all -n prod-cg-25-03-2026
+  219  kubectl get hpa -n prod-cg-25-03-2026
+  220  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  221  kubectl get all -n prod-cg-25-03-2026
+  222  kubectl get hpa -n prod-cg-25-03-2026
+  223  kubectl delete namespace preprod-cg-25-03-2026
+  224  kubectl get pods -n prod-cg-25-03-2026
+  225  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  226  for APP in ecommerce dashboard rocket-django; do   kubectl patch deployment ${APP}-cg-25-03-2026 -n prod-cg-25-03-2026 --type='json' -p='[
+    {"op": "replace", "path": "/spec/template/spec/containers/0/resources/requests/cpu", "value": "50m"},
+    {"op": "replace", "path": "/spec/template/spec/containers/0/resources/requests/memory", "value": "64Mi"}
+  ]'; done
+  227  kubectl get pods -n prod-cg-25-03-2026
+  228  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  229  kubectl get pods -n prod-cg-25-03-2026
+  230  kubectl get pods -A | grep -E "dev|preprod|prod"h
+  231  for APP in ecommerce dashboard rocket-django; do   kubectl scale deployment ${APP}-cg-25-03-2026 --replicas=2 -n prod-cg-25-03-2026; done
+  232  kubectl get pods -n prod-cg-25-03-2026
+  233  for APP in ecommerce dashboard rocket-django; do   kubectl annotate deployment ${APP}-cg-25-03-2026     -n prod-cg-25-03-2026     kubernetes.io/change-cause="v1 - Déploiement initial ${APP} en prod"     --overwrite; done
+  234  kubectl rollout history deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  235  hostname -I | awk '{print $1}'
+  236  kubectl logs $(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}') -n prod-cg-25-03-2026 --tail=30
+  237  kubectl exec -it $(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}') -n prod-cg-25-03-2026 -- python manage.py migrate
+  238  kubectl set env deployment/ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 DEBUG="True"
+  239  POD=$(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}')
+  240  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py migrate --run-syncdb
+  241  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py createsuperuser
+  242  POD=$(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}')
+  243  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py makemigrations
+  244  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py migrate
+  245  POD=$(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}')
+  246  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py shell -c "
+from django.db import connection
+tables = connection.introspection.table_names()
+print('Tables existantes:', tables)
+"
+  247  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py showmigrations 2>&1 | head -30
+  248  for POD in $(kubectl get pods -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[*].metadata.name}'); do   echo "=== Migrating $POD ===";   kubectl exec $POD -n prod-cg-25-03-2026 -- python manage.py migrate --run-syncdb; done
+  249  for APP in dashboard rocket-django; do   for POD in $(kubectl get pods -l app=${APP}-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[*].metadata.name}'); do     echo "=== Migrating $POD ($APP) ===";     kubectl exec $POD -n prod-cg-25-03-2026 -- python manage.py migrate --run-syncdb;   done; done
+  250  POD=$(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}')
+  251  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py createsuperuser
+  252  kubectl exec -it $POD -n prod-cg-25-03-2026 -- python manage.py shell -c "
+from apps.common.models import StripeCredentials
+StripeCredentials.objects.get_or_create(
+    id=1,
+    defaults={
+        'publishable_key': '$(kubectl get secret secret-ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath="{.data.STRIPE_PUBLISHABLE_KEY}" | base64 -d)',
+        'secret_key': '$(kubectl get secret secret-ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 -o jsonpath="{.data.STRIPE_SECRET_KEY}" | base64 -d)'
+    }
+)
+print('Stripe credentials saved')
+"
+  253  eval $(minikube docker-env)
+  254  docker build -t ecommerce-cg-25-03-2026:latest -f ecommerce/Dockerfile ecommerce/
+  255  kubectl rollout restart deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  256  docker build -t ecommerce-cg-25-03-2026:latest -f ecommerce/Dockerfile ecommerce/
+  257  kubectl rollout restart deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  258  docker build -t ecommerce-cg-25-03-2026:latest -f ecommerce/Dockerfile ecommerce/
+  259  kubectl rollout restart deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  260  kubectl set image deployment/ecommerce-cg-25-03-2026   ecommerce=ecommerce-cg-25-03-2026:v1   -n prod-cg-25-03-2026
+  261  kubectl annotate deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   kubernetes.io/change-cause="v2 - Mise à jour image vers tag v1"   --overwrite
+  262  kubectl rollout status deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  263  kubectl rollout history deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  264  kubectl rollout undo deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   --to-revision=1
+  265  kubectl rollout status deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  266  kubectl annotate deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   kubernetes.io/change-cause="v3 - Rollback vers v1 suite à un problème"   --overwrite
+  267  kubectl rollout history deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  268  kubectl get pods -n prod-cg-25-03-2026 --no-headers | wc -l
+  269  cd ..
+  270  docker --version
+  271  minikube version
+  272  kubectl version --client
+  273  git log --oneline
+  274  cd projet-k8s-CG/
+  275  git log --oneline
+  276  ls
+  277  docker images
+  278  docker images | grep cg-25-03-2026
+  279  minikube status
+  280  minikube addons list | grep metrics
+  281  kubectl get namespaces | grep cg-25-03-2026
+  282  kubectl get all -n dev-cg-25-03-2026
+  283  kubectl get pods -n preprod-cg-25-03-2026
+  284  kubectl get pods -n prod-cg-25-03-2026
+  285  kubectl get hpa -n prod-cg-25-03-2026
+  286  printenv | grep STRIPE
+  287  kubectl exec -it $(kubectl get pod -l app=ecommerce-cg-25-03-2026 \
+  -n prod-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}')   -n prod-cg-25-03-2026 -- printenv | grep STRIPE
+  288  hostname -I | awk '{print $1}'
+  289  kubectl rollout status
+  290  kubectl set image deployment/ecommerce-cg-25-03-2026   ecommerce=ecommerce-cg-25-03-2026:v1   -n prod-cg-25-03-2026
+  291  kubectl annotate deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   kubernetes.io/change-cause="v2 - Mise à jour image vers tag v1"   --overwrite
+  292  kubectl rollout status deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  293  kubectl rollout status
+  294  kubectl rollout history deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  295  kubectl rollout undo deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   --to-revision=1
+  296  kubectl rollout undo deployment ecommerce-cg-25-03-2026   -n prod-cg-25-03-2026   --to-revision=2
+  297  kubectl rollout status deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  298  kubectl rollout history
+  299  kubectl rollout history deployment ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026
+  300  minikube service svc-ecommerce-cg-25-03-2026 -n prod-cg-25-03-2026 --url
+  301  kubectl apply -f dev-namespace.yaml
+  302  kubectl apply -f preprod-namespace.yaml
+  303  kubectl apply -f prod-namespace.yaml
+  304  kubectl get namespaces | grep cg-25-03-2026
+  305  kubectl apply -f ecommerce/k8s/dev/manifest.yaml
+  306  kubectl apply -f dashboard/k8s/dev/manifest.yaml
+  307  kubectl apply -f rocket-django/k8s/dev/manifest.yaml
+  308  kubectl get all -n dev-cg-25-03-2026
+  309  kubectl describe pod ecommerce-cg-25-03-2026-56cd5b665-47bk6 -n dev-cg-25-03-2026
+  310  kubectl create secret generic stripe-secret   --from-literal=STRIPE_SECRET_KEY=XXX   --from-literal=STRIPE_PUBLISHABLE_KEY=XXX   -n dev-cg-25-03-2026
+  311  kubectl delete pod -l app=ecommerce-cg-25-03-2026 -n dev-cg-25-03-2026
+  312  kubectl apply -f ecommerce/k8s/dev/manifest.yaml
+  313  kubectl describe pod ecommerce-cg-25-03-2026-56cd5b665-47bk6 -n dev-cg-25-03-2026
+  314  kubectl get all -n dev-cg-25-03-2026
+  315  kubectl describe pod ecommerce-cg-25-03-2026-56cd5b665-47bk6 -n dev-cg-25-03-2026
+  316  kubectl describe pod ecommerce-cg-25-03-2026-56cd5b665-7k62t -n dev-cg-25-03-2026
+  317  kubectl describe pod $(kubectl get pod -l app=ecommerce-cg-25-03-2026 -n dev-cg-25-03-2026 -o jsonpath='{.items[0].metadata.name}') -n dev-cg-25-03-2026
+  318  kubectl get secrets -n dev-cg-25-03-2026
+  319  kubectl get configmap -n dev-cg-25-03-2026
+  320  kubectl get deployment ecommerce-cg-25-03-2026 -n dev-cg-25-03-2026 -o yaml
+  321  kubectl create secret generic secret-ecommerce-cg-25-03-2026   --from-literal=STRIPE_SECRET_KEY='XXX'   --from-literal=STRIPE_PUBLISHABLE_KEY='XXX'   -n dev-cg-25-03-2026
+  322  kubectl delete pod -l app=ecommerce-cg-25-03-2026 -n dev-cg-25-03-2026
+  323  kubectl get all -n dev-cg-25-03-2026
+  324  kubectl get all -n preprod-cg-25-03-2026
+  325  kubectl create secret generic secret-ecommerce-cg-25-03-2026   --from-literal=STRIPE_SECRET_KEY='XXX'   --from-literal=STRIPE_PUBLISHABLE_KEY='XXX'   -n preprod-cg-25-03-2026
+  326  kubectl apply -f ecommerce/k8s/preprod/manifest.yaml
+  327  kubectl apply -f dashboard/k8s/preprod/manifest.yaml
+  328  kubectl apply -f rocket-django/k8s/preprod/manifest.yaml
+  329  kubectl get all -n preprod-cg-25-03-2026
+  330  kubectl get hpa -n preprod-cg-25-03-2026
+  331  kubectl get all -n preprod-cg-25-03-2026
+  332  kubectl describe pod <un pod Pending> -n preprod-cg-25-03-2026
+  333  kubectl get all -n preprod-cg-25-03-2026
+  334  kubectl get hpa -n preprod-cg-25-03-2026
+  335  tree projet-k8s-CG/ -L 3
+  336  sudo apt install -y tree
+  337  tree projet-k8s-CG/ -L 3
+  338  cd ..
+  339  tree projet-k8s-CG/ -L 3
+  340  find projet-k8s-CG/ -maxdepth 3 | sort
+  341  cd projet-k8s-CG/
+  342  NAMESPACE="prod-cg-25-03-2026"
+  343  history > history-projet-CG.log
+  344  kubectl get events -n "$NAMESPACE" > history-kubernetes-events-projet-CG-prod.log
+  345  for APP in ecommerce dashboard rocket-django; do   PODS=$(kubectl get pods -l app=${APP}-cg-25-03-2026 -n "$NAMESPACE" -o jsonpath='{.items[*].metadata.name}' 2>/dev/null);   if [ -n "$PODS" ]; then     for POD in $PODS; do       kubectl logs "$POD" -n "$NAMESPACE" > ${POD}.log 2>/dev/null;     done;   else     echo "Aucun pod trouvé pour $APP" > history-kubernetes-logs-projet-CG-${APP}-prod.log;   fi; done
+  346  for APP in ecommerce dashboard rocket-django; do   kubectl describe deployment ${APP}-cg-25-03-2026 -n "$NAMESPACE" > describe-deployment-${APP}-prod.log 2>/dev/null; done
+  347  kubectl get all -n "$NAMESPACE" > get-all-prod.log
+  348  kubectl get hpa -n "$NAMESPACE" > hpa-prod.log
+  349  for APP in ecommerce dashboard rocket-django; do   kubectl rollout history deployment ${APP}-cg-25-03-2026 -n "$NAMESPACE" > rollout-history-${APP}-prod.log 2>/dev/null; done
+  350  docker images | grep cg-25-03-2026 > docker-images.log
+  351  kubectl top pods -n "$NAMESPACE" > top-pods-prod.log 2>/dev/null
+  352  kubectl top nodes > top-nodes.log 2>/dev/null
+  353  ls -la
+  354  cd logs/
+  355  NAMESPACE="prod-cg-25-03-2026"
+  356  history > history-projet-CG.log
+  357  kubectl get events -n "$NAMESPACE" > history-kubernetes-events-projet-CG-prod.log
+  358  for APP in ecommerce dashboard rocket-django; do   PODS=$(kubectl get pods -l app=${APP}-cg-25-03-2026 -n "$NAMESPACE" -o jsonpath='{.items[*].metadata.name}' 2>/dev/null);   if [ -n "$PODS" ]; then     for POD in $PODS; do       kubectl logs "$POD" -n "$NAMESPACE" > ${POD}.log 2>/dev/null;     done;   else     echo "Aucun pod trouvé pour $APP" > history-kubernetes-logs-projet-CG-${APP}-prod.log;   fi; done
+  359  for APP in ecommerce dashboard rocket-django; do   kubectl describe deployment ${APP}-cg-25-03-2026 -n "$NAMESPACE" > describe-deployment-${APP}-prod.log 2>/dev/null; done
+  360  kubectl get all -n "$NAMESPACE" > get-all-prod.log
+  361  kubectl get hpa -n "$NAMESPACE" > hpa-prod.log
+  362  for APP in ecommerce dashboard rocket-django; do   kubectl rollout history deployment ${APP}-cg-25-03-2026 -n "$NAMESPACE" > rollout-history-${APP}-prod.log 2>/dev/null; done
+  363  docker images | grep cg-25-03-2026 > docker-images.log
+  364  kubectl top pods -n "$NAMESPACE" > top-pods-prod.log 2>/dev/null
+  365  kubectl top nodes > top-nodes.log 2>/dev/null
+  366  ls -la
+  367  NAMESPACE="prod-cg-25-03-2026"
+  368  history > history-projet-CG.log

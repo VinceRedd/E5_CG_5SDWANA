@@ -1,0 +1,41 @@
+Name:                   dashboard-cg-25-03-2026
+Namespace:              prod-cg-25-03-2026
+CreationTimestamp:      Wed, 25 Mar 2026 06:16:51 -0400
+Labels:                 app=dashboard-cg-25-03-2026
+                        env=prod
+Annotations:            deployment.kubernetes.io/revision: 2
+                        kubernetes.io/change-cause: v1 - Déploiement initial dashboard en prod
+Selector:               app=dashboard-cg-25-03-2026
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  0 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=dashboard-cg-25-03-2026
+           env=prod
+  Containers:
+   dashboard:
+    Image:      dashboard-cg-25-03-2026:latest
+    Port:       5005/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     500m
+      memory:  512Mi
+    Requests:
+      cpu:     50m
+      memory:  64Mi
+    Environment Variables from:
+      cm-dashboard-cg-25-03-2026  ConfigMap  Optional: false
+    Environment:                  <none>
+    Mounts:                       <none>
+  Volumes:                        <none>
+  Node-Selectors:                 <none>
+  Tolerations:                    <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  dashboard-cg-25-03-2026-856bcf9f5f (0/0 replicas created)
+NewReplicaSet:   dashboard-cg-25-03-2026-7d5dd84c7d (3/3 replicas created)
+Events:          <none>

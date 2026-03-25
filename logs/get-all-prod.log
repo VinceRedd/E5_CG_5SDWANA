@@ -1,0 +1,39 @@
+NAME                                               READY   STATUS    RESTARTS   AGE
+pod/dashboard-cg-25-03-2026-7d5dd84c7d-j4w5c       1/1     Running   0          5h4m
+pod/dashboard-cg-25-03-2026-7d5dd84c7d-rbh4c       1/1     Running   0          5h4m
+pod/dashboard-cg-25-03-2026-7d5dd84c7d-v9wvf       1/1     Running   0          5h3m
+pod/ecommerce-cg-25-03-2026-f7755c6b7-2l4bz        1/1     Running   0          3h39m
+pod/ecommerce-cg-25-03-2026-f7755c6b7-jc5bd        1/1     Running   0          3h39m
+pod/ecommerce-cg-25-03-2026-f7755c6b7-mrv85        1/1     Running   0          3h39m
+pod/rocket-django-cg-25-03-2026-5488d97ff8-hscns   1/1     Running   0          5h4m
+pod/rocket-django-cg-25-03-2026-5488d97ff8-wj7wr   1/1     Running   0          5h4m
+pod/rocket-django-cg-25-03-2026-5488d97ff8-zlzpm   1/1     Running   0          5h3m
+
+NAME                                      TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/svc-dashboard-cg-25-03-2026       LoadBalancer   10.102.73.80    <pending>     5005:30911/TCP   5h24m
+service/svc-ecommerce-cg-25-03-2026       LoadBalancer   10.97.103.120   <pending>     5005:32293/TCP   5h10m
+service/svc-rocket-django-cg-25-03-2026   LoadBalancer   10.96.22.68     <pending>     5005:32429/TCP   5h24m
+
+NAME                                          READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/dashboard-cg-25-03-2026       3/3     3            3           5h24m
+deployment.apps/ecommerce-cg-25-03-2026       3/3     3            3           5h10m
+deployment.apps/rocket-django-cg-25-03-2026   3/3     3            3           5h24m
+
+NAME                                                     DESIRED   CURRENT   READY   AGE
+replicaset.apps/dashboard-cg-25-03-2026-7d5dd84c7d       3         3         3       5h4m
+replicaset.apps/dashboard-cg-25-03-2026-856bcf9f5f       0         0         0       5h24m
+replicaset.apps/ecommerce-cg-25-03-2026-5bd8b84464       0         0         0       5h10m
+replicaset.apps/ecommerce-cg-25-03-2026-5c8b595d98       0         0         0       3h40m
+replicaset.apps/ecommerce-cg-25-03-2026-6568855b49       0         0         0       4h20m
+replicaset.apps/ecommerce-cg-25-03-2026-6b68654674       0         0         0       4h31m
+replicaset.apps/ecommerce-cg-25-03-2026-7697fdb8cf       0         0         0       4h26m
+replicaset.apps/ecommerce-cg-25-03-2026-7b7ffdf6d6       0         0         0       4h55m
+replicaset.apps/ecommerce-cg-25-03-2026-f7755c6b7        3         3         3       5h4m
+replicaset.apps/ecommerce-cg-25-03-2026-f9795864b        0         0         0       4h28m
+replicaset.apps/rocket-django-cg-25-03-2026-5488d97ff8   3         3         3       5h4m
+replicaset.apps/rocket-django-cg-25-03-2026-68d5d948c    0         0         0       5h24m
+
+NAME                                                                  REFERENCE                                TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/hpa-dashboard-cg-25-03-2026       Deployment/dashboard-cg-25-03-2026       cpu: 2%/50%   3         20        3          5h24m
+horizontalpodautoscaler.autoscaling/hpa-ecommerce-cg-25-03-2026       Deployment/ecommerce-cg-25-03-2026       cpu: 2%/50%   3         20        3          5h10m
+horizontalpodautoscaler.autoscaling/hpa-rocket-django-cg-25-03-2026   Deployment/rocket-django-cg-25-03-2026   cpu: 5%/50%   3         20        3          5h24m

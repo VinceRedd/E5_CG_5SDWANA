@@ -1,0 +1,4 @@
+NAME                              REFERENCE                                TARGETS       MINPODS   MAXPODS   REPLICAS   AGE
+hpa-dashboard-cg-25-03-2026       Deployment/dashboard-cg-25-03-2026       cpu: 2%/50%   3         20        3          5h24m
+hpa-ecommerce-cg-25-03-2026       Deployment/ecommerce-cg-25-03-2026       cpu: 2%/50%   3         20        3          5h10m
+hpa-rocket-django-cg-25-03-2026   Deployment/rocket-django-cg-25-03-2026   cpu: 5%/50%   3         20        3          5h24m

@@ -1,0 +1,11 @@
+deployment.apps/ecommerce-cg-25-03-2026 
+REVISION  CHANGE-CAUSE
+3         v1 - Déploiement initial ecommerce en prod
+4         v1 - Déploiement initial ecommerce en prod
+5         v1 - Déploiement initial ecommerce en prod
+6         v1 - Déploiement initial ecommerce en prod
+7         v2 - Mise à jour image vers tag v1
+8         v3 - Rollback vers v1 suite à un problème
+9         v2 - Mise à jour image vers tag v1
+10        v1 - Déploiement initial ecommerce en prod
+

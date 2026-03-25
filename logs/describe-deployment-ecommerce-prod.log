@@ -1,0 +1,42 @@
+Name:                   ecommerce-cg-25-03-2026
+Namespace:              prod-cg-25-03-2026
+CreationTimestamp:      Wed, 25 Mar 2026 06:30:06 -0400
+Labels:                 app=ecommerce-cg-25-03-2026
+                        env=prod
+Annotations:            deployment.kubernetes.io/revision: 10
+                        kubernetes.io/change-cause: v1 - Déploiement initial ecommerce en prod
+Selector:               app=ecommerce-cg-25-03-2026
+Replicas:               3 desired | 3 updated | 3 total | 3 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  0 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=ecommerce-cg-25-03-2026
+           env=prod
+  Containers:
+   ecommerce:
+    Image:      ecommerce-cg-25-03-2026:latest
+    Port:       5005/TCP
+    Host Port:  0/TCP
+    Limits:
+      cpu:     500m
+      memory:  512Mi
+    Requests:
+      cpu:     50m
+      memory:  64Mi
+    Environment Variables from:
+      cm-ecommerce-cg-25-03-2026      ConfigMap  Optional: false
+      secret-ecommerce-cg-25-03-2026  Secret     Optional: false
+    Environment:                      <none>
+    Mounts:                           <none>
+  Volumes:                            <none>
+  Node-Selectors:                     <none>
+  Tolerations:                        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  ecommerce-cg-25-03-2026-5bd8b84464 (0/0 replicas created), ecommerce-cg-25-03-2026-7b7ffdf6d6 (0/0 replicas created), ecommerce-cg-25-03-2026-6b68654674 (0/0 replicas created), ecommerce-cg-25-03-2026-f9795864b (0/0 replicas created), ecommerce-cg-25-03-2026-7697fdb8cf (0/0 replicas created), ecommerce-cg-25-03-2026-6568855b49 (0/0 replicas created), ecommerce-cg-25-03-2026-5c8b595d98 (0/0 replicas created)
+NewReplicaSet:   ecommerce-cg-25-03-2026-f7755c6b7 (3/3 replicas created)
+Events:          <none>

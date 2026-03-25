@@ -1,0 +1,549 @@
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] Current configuration:
+  config: gunicorn-cfg.py
+  wsgi_app: None
+  bind: ['0.0.0.0:5005']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /app
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: -
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: True
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: core.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f4578320ae0>
+  on_reload: <function OnReload.on_reload at 0x7f4578320c20>
+  when_ready: <function WhenReady.when_ready at 0x7f4578320d60>
+  pre_fork: <function Prefork.pre_fork at 0x7f4578320ea0>
+  post_fork: <function Postfork.post_fork at 0x7f4578320fe0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f4578321120>
+  worker_int: <function WorkerInt.worker_int at 0x7f4578321260>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f45783213a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f45783214e0>
+  pre_request: <function PreRequest.pre_request at 0x7f4578321620>
+  post_request: <function PostRequest.post_request at 0x7f45783216c0>
+  child_exit: <function ChildExit.child_exit at 0x7f4578321800>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f4578321940>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f4578321a80>
+  on_exit: <function OnExit.on_exit at 0x7f4578321bc0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f4578321da0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2026-03-25 10:36:05 +0000] [1] [INFO] Starting gunicorn 21.2.0
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] Arbiter booted
+[2026-03-25 10:36:05 +0000] [1] [INFO] Listening at: http://0.0.0.0:5005 (1)
+[2026-03-25 10:36:05 +0000] [1] [INFO] Using worker: sync
+[2026-03-25 10:36:05 +0000] [7] [INFO] Booting worker with pid: 7
+[2026-03-25 10:36:05 +0000] [1] [DEBUG] 1 workers
+[2026-03-25 10:42:15 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:7)
+[2026-03-25 10:42:15 +0000] [7] [INFO] Worker exiting (pid: 7)
+[2026-03-25 10:42:16 +0000] [1] [ERROR] Worker (pid:7) exited with code 1
+[2026-03-25 10:42:16 +0000] [1] [ERROR] Worker (pid:7) exited with code 1.
+[2026-03-25 10:42:16 +0000] [8] [INFO] Booting worker with pid: 8
+[2026-03-25 10:42:17 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET / HTTP/1.1" 200 89813 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:10:42:18 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:18 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/DE.png
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/img/icons/flags/DE.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/US.png
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/img/icons/flags/US.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/chartjs.min.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/chartjs.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/threejs.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/threejs.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/orbit-controls.js
+127.0.0.1 - - [25/Mar/2026:10:42:19 +0000] "GET /static/assets/js/plugins/orbit-controls.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:20 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:10:42:20 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:20 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/GB.png
+127.0.0.1 - - [25/Mar/2026:10:42:20 +0000] "GET /static/assets/img/icons/flags/GB.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:20 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/BR.png
+127.0.0.1 - - [25/Mar/2026:10:42:20 +0000] "GET /static/assets/img/icons/flags/BR.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:42:20 +0000] [8] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:10:42:20 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:18 +0000] [8] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:10:43:18 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:18 +0000] [8] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:10:43:18 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 200 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:18 +0000] [8] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:10:43:18 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:18 +0000] [8] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:10:43:18 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:18 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 200 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET / HTTP/1.1" 200 89813 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/US.png
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/icons/flags/US.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/chartjs.min.js
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/js/plugins/chartjs.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/DE.png
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/orbit-controls.js
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/img/icons/flags/DE.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/js/plugins/orbit-controls.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:43:19 +0000] [8] [DEBUG] GET /static/assets/js/plugins/threejs.js
+127.0.0.1 - - [25/Mar/2026:10:43:19 +0000] "GET /static/assets/js/plugins/threejs.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:38 +0000] [8] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:38 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET / HTTP/1.1" 200 89813 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/US.png
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/img/icons/flags/US.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/DE.png
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/img/icons/flags/DE.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/js/plugins/orbit-controls.js
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/js/plugins/orbit-controls.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/js/plugins/chartjs.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/js/plugins/chartjs.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/BR.png
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/img/icons/flags/BR.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/js/plugins/threejs.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/js/plugins/threejs.js
+[2026-03-25 10:50:39 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/GB.png
+127.0.0.1 - - [25/Mar/2026:10:50:39 +0000] "GET /static/assets/img/icons/flags/GB.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET / HTTP/1.1" 200 89813 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/US.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/icons/flags/US.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/DE.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/icons/flags/DE.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/core/popper.min.js
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/GB.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/icons/flags/GB.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/BR.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/icons/flags/BR.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/chartjs.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/chartjs.min.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/threejs.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/threejs.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/orbit-controls.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/plugins/orbit-controls.js HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:50:48 +0000] [8] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:10:50:48 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 200 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET / HTTP/1.1" 200 89813 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/US.png
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/icons/flags/US.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/DE.png
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/icons/flags/DE.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/icons/flags/GB.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/GB.png
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/img/icons/flags/BR.png
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/img/icons/flags/BR.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/chartjs.min.js
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/chartjs.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/orbit-controls.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/orbit-controls.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:30 +0000] [8] [DEBUG] GET /static/assets/js/plugins/threejs.js
+127.0.0.1 - - [25/Mar/2026:10:52:30 +0000] "GET /static/assets/js/plugins/threejs.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:31 +0000] [8] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:10:52:31 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET / HTTP/1.1" 200 89813 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+[2026-03-25 10:52:47 +0000] [8] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:10:52:47 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/core/popper.min.js
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:48 +0000] [8] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:10:53:48 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 10:53:49 +0000] [8] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:10:53:49 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:24 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:8)
+[2026-03-25 11:03:24 +0000] [8] [INFO] Worker exiting (pid: 8)
+[2026-03-25 11:03:25 +0000] [1] [ERROR] Worker (pid:8) exited with code 1
+[2026-03-25 11:03:25 +0000] [1] [ERROR] Worker (pid:8) exited with code 1.
+[2026-03-25 11:03:25 +0000] [15] [INFO] Booting worker with pid: 15
+[2026-03-25 11:03:26 +0000] [15] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:27 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:11:03:27 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:28 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:11:03:28 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:03:28 +0000] [15] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:11:03:28 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:32 +0000] [15] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:11:09:32 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:09:33 +0000] [15] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:11:09:33 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:51 +0000] [15] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:11:10:51 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:10:52 +0000] [15] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:11:10:52 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:17 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:15)
+[2026-03-25 11:13:17 +0000] [15] [INFO] Worker exiting (pid: 15)
+[2026-03-25 11:13:17 +0000] [1] [ERROR] Worker (pid:15) exited with code 1
+[2026-03-25 11:13:17 +0000] [1] [ERROR] Worker (pid:15) exited with code 1.
+[2026-03-25 11:13:17 +0000] [16] [INFO] Booting worker with pid: 16
+[2026-03-25 11:13:18 +0000] [16] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/logo-ct-dark.png
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/logo-ct-dark.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/team-2.jpg
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/team-2.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/font-awesome6.4.0.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/font-awesome6.4.0.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/css/soft-ui-dashboard.css
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/css/soft-ui-dashboard.css?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/small-logos/logo-spotify.svg
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/small-logos/logo-spotify.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/shapes/waves-white.svg
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/shapes/waves-white.svg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/core/popper.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/core/popper.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/mercedes-eqc.png
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/mercedes-eqc.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/core/bootstrap.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/core/bootstrap.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/perfect-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/perfect-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/smooth-scrollbar.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/smooth-scrollbar.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/jkanban/jkanban.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/jkanban/jkanban.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/dragula/dragula.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/dragula/dragula.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/soft-ui-dashboard.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/soft-ui-dashboard.min.js?v=1.2.0 HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/img/curved-images/curved10.jpg
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/img/curved-images/curved10.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/nouislider.min.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/nouislider.min.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:19 +0000] [16] [DEBUG] GET /static/assets/js/plugins/leaflet.js
+127.0.0.1 - - [25/Mar/2026:11:13:19 +0000] "GET /static/assets/js/plugins/leaflet.js HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:20 +0000] [16] [DEBUG] GET /static/assets/img/curved-images/white-curved.jpg
+127.0.0.1 - - [25/Mar/2026:11:13:20 +0000] "GET /static/assets/img/curved-images/white-curved.jpg HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 11:13:20 +0000] [16] [DEBUG] GET /static/assets/img/favicon.png
+127.0.0.1 - - [25/Mar/2026:11:13:20 +0000] "GET /static/assets/img/favicon.png HTTP/1.1" 304 0 "http://192.168.80.136:5006/automotive" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 12:52:01 +0000] [16] [DEBUG] GET /automotive
+127.0.0.1 - - [25/Mar/2026:12:52:02 +0000] "GET /automotive HTTP/1.1" 200 71019 "http://192.168.80.136:5006/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+[2026-03-25 12:52:33 +0000] [1] [CRITICAL] WORKER TIMEOUT (pid:16)
+[2026-03-25 12:52:33 +0000] [16] [INFO] Worker exiting (pid: 16)
+[2026-03-25 12:52:34 +0000] [1] [ERROR] Worker (pid:16) was sent SIGKILL! Perhaps out of memory?
+[2026-03-25 12:52:34 +0000] [17] [INFO] Booting worker with pid: 17
